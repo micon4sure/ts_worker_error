@@ -1,5 +1,9 @@
 const path = require('path');
 const { workerData } = require('worker_threads');
 
-require('ts-node').register();
-require(path.resolve(workerData.file));
+try {
+  require('ts-node').register();
+  require(path.resolve(workerData.file));
+} catch(error) {
+  console.error(error)
+}

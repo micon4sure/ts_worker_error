@@ -1,8 +1,7 @@
-const {
-  Worker, isMainThread, parentPort, workerData
-} = require('worker_threads');
+const { Worker, parentPort } = require('worker_threads');
 
 parentPort.addListener('message', message => {
-  console.log('msg', message.foo)
-  throw new Error('test');
+  console.log('msg', message)
+  const worker = new Worker('./subworker.js');
+  worker.postMessage('from: worker; to: subworker')
 });

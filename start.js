@@ -1,6 +1,4 @@
-const {
-  Worker, isMainThread, parentPort, workerData
-} = require('worker_threads');
+const { Worker } = require('worker_threads');
 
 const worker = new Worker('./worker.js');
-worker.postMessage({'foo': 'bar'})
+worker.postMessage('from: start; to: worker')
